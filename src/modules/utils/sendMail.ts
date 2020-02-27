@@ -2,7 +2,6 @@ import nodemailer from "nodemailer";
 
 // async..await is not allowed in global scope, must use a wrapper
 export async function sendMail(email: string, url: string) {
-  console.log("hi");
   const testAccount = await nodemailer.createTestAccount();
 
   // create reusable transporter object using the default SMTP transport
