@@ -12,6 +12,7 @@ export class ForgotPasswordResolver {
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
+      console.log("forgotpassword:유저없음");
       return false;
     }
     const token = v4();

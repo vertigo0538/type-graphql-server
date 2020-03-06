@@ -22,7 +22,7 @@ export class User extends BaseEntity {
 
   @Field()
   name(@Root() parent: User): string {
-    return `${parent.firstName} ${parent.lastName}`;
+    return `${parent.firstName}${parent.lastName}`;
   }
 
   @Column()

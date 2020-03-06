@@ -14,15 +14,17 @@ export class ChangePasswordResolver {
     @Arg("data") { token, password }: ChangePasswordInput,
     @Ctx() ctx: MyContext
   ): Promise<User | null> {
-    const userId = await redis.get(token);
+    const userId = await redis.get(forgotPasswordPrefix + token);
 
     if (!userId) {
+      console.log("changepassword:잘못된 토큰");
       return null;
     }
 
     const user = await User.findOne(userId);
 
     if (!user) {
+      console.log("changepassword:유저없음");
       return null;
     }
 
